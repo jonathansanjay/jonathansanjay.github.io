@@ -151,8 +151,8 @@
         <a aria-label="Navigate to the Places Travelled section" href="#places" class="waves-effect waves-dark teal-text"><i
             class="mdi mdi-google-maps small"></i><span>Places Travelled</span></a>
       </li>
-      
-    </ul>
+
+    </ul>r
   </nav>
 
   <!-- Nav class 2 -->
@@ -349,40 +349,17 @@
       <h3 class="page-title white-text teal">Projects</h3>
       <div class="container">
         <div class="row">
-
-          <div class="col s12 m6 l4">
-            <div class="card medium">
-              <div class="card-image waves-effect waves-block waves-light">
-                <img alt="music streaming app" src="/assets/img/project-music-player.png" style="height: 100%; width: 100%" class="activator" />
-              </div>
-              <div class="card-content">
-                <span class="card-title activator teal-text hoverline">AI Piano Accompaniment Generator<i
-                    class="mdi-navigation-more-vert right"></i></span>
-                <p>
-                  Trained Neural Networks to generate a piano accompaniment for any given melody. Built data pipelines to process data before training.
-                </p>
-              </div>
-            </div>
+          <!-- New Recent Projects Section -->
+          <div id="recent-projects" class="col s12"></div>
+        </div>
+        <div class="row">
+          <!-- Load More Button -->
+          <div class="col s12">
+            <button id="load-more" class="btn teal">Load More</button>
           </div>
-
-          <div class="col s12 m6 l4">
-            <div class="card medium">
-              <div class="card-image waves-effect waves-block waves-light">
-                <img alt="Coup Game" src="/assets/img/coup.jpg" style="height: 100%; width: 100%" class="activator" />
-              </div>
-              <div class="card-content">
-                <span class="card-title activator teal-text hoverline">Coup Game<i
-                    class="mdi-navigation-more-vert right"></i></span>
-                <p>
-                  Developing an app based on the popular strategy card game, "Coup"
-                </p>
-              </div>
-            </div>
-          </div>
-
         </div>
       </div>
-    </section>
+    </section>    
 
     <!-- Fifth Section: Skills -->
     <section id="skills" class="section scrollspy">
@@ -602,6 +579,72 @@
       })
     })
   </script>
+  <script>
+    const projects = [
+      {
+        title: 'AI Piano Accompaniment Generator',
+        description: 'Trained Neural Networks to generate a piano accompaniment for any given melody. Built data pipelines to process data before training.',
+        image: '/assets/img/project-music-player.png',
+        alt: 'music streaming app'
+      },
+      {
+        title: 'Coup Game',
+        description: 'Developing an app based on the popular strategy card game, "Coup".',
+        image: '/assets/img/coup.jpg',
+        alt: 'Coup Game'
+      },
+      {
+        title: 'Weather Cancellations Predictor',
+        description: 'Developing a predictive model for weather-related air ambulance cancellations.',
+        image: '/assets/img/air-ambulance.webp',
+        alt: 'Weather Cancellations Predictor'
+      }
+    ];
+    
+    let displayedProjects = 1;
+    
+    function displayProjects() {
+      const recentProjectsDiv = document.getElementById('recent-projects');
+      recentProjectsDiv.innerHTML = '';
+    
+      for (let i = 0; i < displayedProjects && i < projects.length; i++) {
+        const project = projects[i];
+    
+        const projectHTML = `
+          <div class="col s12 m6 l4">
+            <div class="card medium">
+              <div class="card-image waves-effect waves-block waves-light">
+                <img alt="${project.alt}" src="${project.image}" style="height: 100%; width: 100%" class="activator" />
+              </div>
+              <div class="card-content">
+                <span class="card-title activator teal-text hoverline">${project.title}
+                  <i class="mdi-navigation-more-vert right"></i>
+                </span>
+                <p>${project.description}</p>
+              </div>
+            </div>
+          </div>
+        `;
+    
+        recentProjectsDiv.innerHTML += projectHTML;
+      }
+    }
+    
+    function loadMoreProjects() {
+      displayedProjects++;
+      if (displayedProjects >= projects.length) {
+        document.getElementById('load-more').style.display = 'none';
+      }
+      displayProjects();
+    }
+    
+    document.addEventListener('DOMContentLoaded', () => {
+      displayProjects();
+      
+      document.getElementById('load-more').addEventListener('click', loadMoreProjects);
+    });
+  </script>
+    
 </body>
 
 </html>
