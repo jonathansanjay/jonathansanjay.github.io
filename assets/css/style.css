@@ -298,7 +298,7 @@ h3 {
 }
 
 #intro.section .underline {
-  border-bottom: 5px solid #24305e;
+  border-bottom: 5px solid #394e9e;
 }
 
 #intro.section .teal {
@@ -317,7 +317,7 @@ h3 {
 .waves-effect.waves-blue .waves-ripple {
   /* The alpha value allows the text and background color
    of the button to still show through. */
-  background-color: rgba(33, 150, 243, 0.2);
+  background-color: #394e9e;
 }
 
 .card {
