@@ -583,21 +583,24 @@
     const projects = [
       {
         title: 'AI Piano Accompaniment Generator',
-        description: 'Trained Neural Networks to generate a piano accompaniment for any given melody. Built data pipelines to process data before training.',
+        description: 'Trained Neural Networks to generate a piano accompaniments for musicians.',
         image: '/assets/img/project-music-player.png',
-        alt: 'music streaming app'
+        alt: 'music streaming app',
+        date: '2023-05-30' // YYYY-MM-DD
       },
       {
         title: 'Coup Game',
         description: 'Developing an app based on the popular strategy card game, "Coup".',
         image: '/assets/img/coup.jpg',
-        alt: 'Coup Game'
+        alt: 'Coup Game',
+        date: '2023-12-10'
       },
       {
         title: 'Weather Cancellations Predictor',
         description: 'Developing a predictive model for weather-related air ambulance cancellations.',
         image: '/assets/img/air-ambulance.webp',
-        alt: 'Weather Cancellations Predictor'
+        alt: 'Weather Cancellations Predictor',
+        date: '2024-09-20'
       }
     ];
     
@@ -606,9 +609,11 @@
     function displayProjects() {
       const recentProjectsDiv = document.getElementById('recent-projects');
       recentProjectsDiv.innerHTML = '';
+
+      const sortedProjects = projects.sort((a, b) => new Date(b.date) - new Date(a.date));
     
-      for (let i = 0; i < displayedProjects && i < projects.length; i++) {
-        const project = projects[i];
+      for (let i = 0; i < displayedProjects && i < sortedProjects.length; i++) {
+        const project = sortedProjects[i];
     
         const projectHTML = `
           <div class="col s12 m6 l4">
